@@ -116,6 +116,8 @@ def F54_iterativa (n:int):
     # finalmente se retorna el valor en la posicion n
     return f54[n]
 
+# funcion para obtener la media del tiempo de ejecucion de cada programa y posteriormente dichos 
+# valores exportarlos en un archivo csv
 def generate_csv(test_case:[[int]]):
     values = []
     headers = ["N", "Funcion Recursiva", "Funcion Recursiva de Cola", "Funcion Iterativa"]
@@ -187,7 +189,8 @@ def main():
     print(f"\t>> Valor obtenido: {val_recursivo}")
     print(f"\t>> El tiempo transcurrido es de: {total_time:0.4f} segundos")
 
-    generate_csv([[20]*10,[40]*10,[60]*10,[70]*10,[80]*10,[90]*10,[100]*10,[110]*10,[120]*10])
+    # Si desea obtener la media de estos casos de prueba en archivo csv, descomente la funcion.
+    #generate_csv([[20]*10,[40]*10,[60]*10,[70]*10,[80]*10,[90]*10,[100]*10,[110]*10,[120]*10])
 
 if __name__ == "__main__":
     main()
