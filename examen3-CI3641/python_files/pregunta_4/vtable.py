@@ -22,13 +22,14 @@ class ManejadorVtable():
             self.manejador_vtable[clase] = [atributos, superclase]
     
     def describir_clase(self, clase):
+        self.error_clase = ""
         metodos_clase = []
 
         if clase not in self.manejador_vtable.keys():
             self.error_clase = f"la clase {clase} no ha sido definida"
         else:
             vtable_clase = self.manejador_vtable[clase]
-            metodos_clase.append([vtable_clase[0], clase])
+            metodos_clase.append([set(vtable_clase[0]), clase])
 
             while vtable_clase[1] != None:
                 superclase = vtable_clase[1]
@@ -40,6 +41,6 @@ class ManejadorVtable():
                     if any(u_metodos & conjunto_metodos_actual):
                         conjunto_metodos_actual -= u_metodos
 
-                metodos_clase.append([list(conjunto_metodos_actual), superclase])
+                metodos_clase.append([conjunto_metodos_actual, superclase])
                 
         return metodos_clase
