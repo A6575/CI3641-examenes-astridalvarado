@@ -3,7 +3,6 @@
 #include <queue>
 #include <vector>
 #include<map>
-#include<algorithm>
 
 using namespace std;
 
@@ -20,15 +19,23 @@ class DFS : public Busqueda {
 public:
     int buscar(int H, int D, const Grafo &graph) override{
         stack<int> stack;
-        vector<bool> visitado(graph.lista_adyacencia.size(), false);
+        map<int, bool> visitado;
         vector<int> camino;
+        // Inicializar con false
+        for(auto& par : graph.lista_adyacencia) {
+         visitado[par.first] = false; 
+        }
+        
         stack.push(H);
+
         while (!stack.empty()) {
             int nodo = stack.top();
             stack.pop();
+
             if (nodo == D) {
                 return camino.size(); // Cantidad de nodos explorados
             }
+
             if (!visitado[nodo]) {
                 visitado[nodo] = true;
                 camino.push_back(nodo);
@@ -47,8 +54,13 @@ class BFS : public Busqueda {
 public:
     int buscar(int H, int D, const Grafo& graph) override{ 
         queue<int> cola;
-        vector<bool> visitado(graph.lista_adyacencia.size(), false);
+        map<int, bool> visitado;
         vector<int> camino;
+        // Inicializar con false
+        for(auto& par : graph.lista_adyacencia) {
+         visitado[par.first] = false; 
+        }
+        
         cola.push(H);
         while (!cola.empty()) {
             int nodo = cola.front();
