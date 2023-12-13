@@ -38,7 +38,7 @@ def contar_archivos_carpetas(path):
 
 if __name__ == '__main__':
     # variable que contiene la ruta raiz
-    path = '../../../examen3-CI3641'
+    path = ''
     # se llama a la funcion
     contar_archivos_carpetas(path)
     # se obtiene el total de la cola global. Este sera
